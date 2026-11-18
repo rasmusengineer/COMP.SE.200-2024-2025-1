@@ -24,4 +24,14 @@ jobs:
     - name: Run tests
       run: npm test
       continue-on-error: true
+
+    - name: Run coverage reports
+      run: npm run coverage
+      continue-on-error: true
+
+    - name: Coveralls
+      uses: coverallsapp/github-action@v2
+      with:
+        file: ./coverage/lcov.info
+        github-token: ${{ secrets.GITHUB_TOKEN }}
       
